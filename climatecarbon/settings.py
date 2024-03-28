@@ -68,8 +68,6 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ALLOW_PRIVATE_NETWORK = True
 
 
-
-
 CORS_ALLOW_METHODS = (
     "DELETE",
     "GET",
@@ -81,7 +79,10 @@ CORS_ALLOW_METHODS = (
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = "*"
+CORS_ALLOW_HEADERS = default_headers + (
+    "Content-Type",  # Add "Content-Type" to the list of allowed headers
+    "Access-Control-Allow-Origin",  # Assuming this is already included
+)
 
 CORS_ALLOW_METHODS = "*"
 

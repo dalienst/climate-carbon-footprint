@@ -107,46 +107,46 @@ score2 = pd.DataFrame(data2)
 print("mean absolute error")
 print(score2)
 
-user_input = {
-    "Body Type": "overweight",
-    "Sex": "male",
-    "Diet": "pescatarian",
-    "How Often Shower": "daily",
-    "Heating Energy Source": "coal",
-    "Transport": "public",
-    "Vehicle Type": "None",
-    "Social Activity": "often",
-    "Monthly Grocery Bill": 230,
-    "Frequency of Traveling by Air": "frequently",
-    "Vehicle Monthly Distance Km": 210,
-    "Waste Bag Size": "large",
-    "Waste Bag Weekly Count": 4,
-    "How Long TV PC Daily Hour": 7,
-    "How Many New Clothes Monthly": 26,
-    "How Long Internet Daily Hour": 1,
-    "Energy efficiency": "No",
-    "Recycling": "['Metal']",
-    "Cooking_With": "['Stove', 'Oven']",
-}
+# user_input = {
+#     "Body Type": "overweight",
+#     "Sex": "male",
+#     "Diet": "pescatarian",
+#     "How Often Shower": "daily",
+#     "Heating Energy Source": "coal",
+#     "Transport": "public",
+#     "Vehicle Type": "None",
+#     "Social Activity": "often",
+#     "Monthly Grocery Bill": 230,
+#     "Frequency of Traveling by Air": "frequently",
+#     "Vehicle Monthly Distance Km": 210,
+#     "Waste Bag Size": "large",
+#     "Waste Bag Weekly Count": 4,
+#     "How Long TV PC Daily Hour": 7,
+#     "How Many New Clothes Monthly": 26,
+#     "How Long Internet Daily Hour": 1,
+#     "Energy efficiency": "No",
+#     "Recycling": "['Metal']",
+#     "Cooking_With": "['Stove', 'Oven']",
+# }
 
-user_df = pd.DataFrame(user_input, index=[0])
+# user_df = pd.DataFrame(user_input, index=[0])
 
-# Encode categorical variables using the label encoder
-for column in categorical_columns:
-    user_df[column] = label_encoder.fit_transform(user_df[column])
+# # Encode categorical variables using the label encoder
+# for column in categorical_columns:
+#     user_df[column] = label_encoder.fit_transform(user_df[column])
 
-# Scale the numerical features
-user_df_scaled = sc.transform(user_df)
+# # Scale the numerical features
+# user_df_scaled = sc.transform(user_df)
 
-# Step 2: Predict Carbon Footprint
+# # Step 2: Predict Carbon Footprint
 
-# Predict carbon emissions using the trained Random Forest Regression model
-predicted_emissions_rf = randomforestregression.predict(user_df_scaled)
-predicted_emissions_xgb = xgbregression.predict(user_df_scaled)
+# # Predict carbon emissions using the trained Random Forest Regression model
+# predicted_emissions_rf = randomforestregression.predict(user_df_scaled)
+# predicted_emissions_xgb = xgbregression.predict(user_df_scaled)
 
-# Display the predicted carbon emissions to the user
-print("Predicted Carbon Emissions (Random Forest):", predicted_emissions_rf[0])
-print("Predicted Carbon Emissions (XGBoost):", predicted_emissions_xgb[0])
+# # Display the predicted carbon emissions to the user
+# print("Predicted Carbon Emissions (Random Forest):", predicted_emissions_rf[0])
+# print("Predicted Carbon Emissions (XGBoost):", predicted_emissions_xgb[0])
 
 
 # Save XGBRegressor model
