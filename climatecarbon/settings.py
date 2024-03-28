@@ -64,7 +64,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOW_PRIVATE_NETWORK = True
 
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS").split(",")
+CORS_ALLOWED_ORIGINS = [
+    "https://knowmycarbonfootprint.vercel.app",
+]
 
 
 CORS_ALLOW_ALL_ORIGINS = True
