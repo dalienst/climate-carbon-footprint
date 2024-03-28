@@ -73,6 +73,14 @@ CORS_ALLOWED_ORIGINS = [
     "https://knowmycarbonfootprint.vercel.app",
 ]
 
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
 
 CORS_ALLOW_ALL_ORIGINS = True
 
