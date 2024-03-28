@@ -27,7 +27,10 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "climate-carbon-footprint.onrender.com",
+]
 
 
 # Application definition
@@ -58,7 +61,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = config("CORS_ORIGIN_WHITELIST").split(",")
+CORS_ORIGIN_WHITELIST = [
+    "https://knowmycarbonfootprint.vercel.app",
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -74,7 +79,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = default_headers + ("Access-Control-Allow-Origin",)
 
 
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS").split(",")
+CSRF_TRUSTED_ORIGINS = [
+    "https://knowmycarbonfootprint.vercel.app",
+]
 
 ROOT_URLCONF = "climatecarbon.urls"
 
