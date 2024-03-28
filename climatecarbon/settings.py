@@ -65,13 +65,10 @@ CORS_ORIGIN_WHITELIST = [
     "https://knowmycarbonfootprint.vercel.app",
 ]
 
-CORS_ALLOW_CREDENTIALS = True
-
 CORS_ALLOW_PRIVATE_NETWORK = True
 
-CORS_ALLOWED_ORIGINS = [
-    "https://knowmycarbonfootprint.vercel.app",
-]
+
+
 
 CORS_ALLOW_METHODS = (
     "DELETE",
@@ -84,12 +81,11 @@ CORS_ALLOW_METHODS = (
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = default_headers + (
-    "Access-Control-Allow-Origin",
-    "Access-Control-Allow-Credentials",
-    "Access-Control-Allow-Methods",
-    "Access-Control-Allow-Headers",
-)
+CORS_ALLOW_HEADERS = "*"
+
+CORS_ALLOW_METHODS = "*"
+
+CORS_ALLOW_CREDENTIALS = True
 
 
 CSRF_TRUSTED_ORIGINS = [
