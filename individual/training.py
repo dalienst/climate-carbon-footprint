@@ -1,3 +1,4 @@
+import pickle
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -9,6 +10,7 @@ from sklearn.metrics import r2_score, mean_absolute_error
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
+from xgboost import XGBRegressor
 
 label_encoder = LabelEncoder()
 sc = StandardScaler()
@@ -48,16 +50,19 @@ linearregression = LinearRegression()
 decisiontreeregression = DecisionTreeRegressor()
 supportvectorregression = SVR(kernel="rbf")
 randomforestregression = RandomForestRegressor()
+xgbregression = XGBRegressor()
 
 linearregression.fit(X_train, y_train)
 decisiontreeregression.fit(X_train, y_train)
 supportvectorregression.fit(X_train, y_train)
 randomforestregression.fit(X_train, y_train)
+xgbregression.fit(X_train, y_train)
 
 y_lin = linearregression.predict(X_test)
 y_dectree = decisiontreeregression.predict(X_test)
 y_supvec = supportvectorregression.predict(X_test)
 y_randfor = randomforestregression.predict(X_test)
+y_xgb = xgbregression.predict(X_test)
 
 data1 = {
     "Regression Algorithms": [
@@ -65,12 +70,14 @@ data1 = {
         "Decision Tree Regression",
         "Support Vector Regression",
         "Random Forest Classifier",
+        "XGB Regression",
     ],
     "Score": [
         r2_score(y_test, y_lin),
         r2_score(y_test, y_dectree),
         r2_score(y_test, y_supvec),
         r2_score(y_test, y_randfor),
+        r2_score(y_test, y_xgb),
     ],
 }
 
@@ -84,12 +91,14 @@ data2 = {
         "Decision Tree Regression",
         "Support Vector Regression",
         "Random Forest Classifier",
+        "XGB Regression",
     ],
     "Score": [
         mean_absolute_error(y_test, y_lin),
         mean_absolute_error(y_test, y_dectree),
         mean_absolute_error(y_test, y_supvec),
         mean_absolute_error(y_test, y_randfor),
+        mean_absolute_error(y_test, y_xgb),
     ],
 }
 
@@ -98,7 +107,10 @@ score2 = pd.DataFrame(data2)
 print("mean absolute error")
 print(score2)
 
-# testing with user input
+# Save XGBRegressor model
+with open("xgboost_model.pkl", "wb") as file:
+    pickle.dump(xgbregression, file)
+
 user_input = {
     "Body Type": "underweight",
     "Sex": "female",
@@ -123,15 +135,19 @@ user_input = {
 
 user_df = pd.DataFrame(user_input, index=[0])
 
-# Encode categorical variables
+# Encode categorical variables using the label encoder
 for column in categorical_columns:
-    user_df[column] = label_encoder.transform(user_df[column])
+    user_df[column] = label_encoder.fit_transform(user_df[column])
 
-# Scale the data
-user_data_scaled = sc.transform(user_df.values)
+# Scale the numerical features
+user_df_scaled = sc.transform(user_df)
 
-# Predict carbon emissions using the trained Random Forest model
-predicted_emissions = randomforestregression.predict(user_data_scaled)
+# Step 2: Predict Carbon Footprint
+
+# Predict carbon emissions using the trained Random Forest Regression model
+predicted_emissions_rf = randomforestregression.predict(user_df_scaled)
+predicted_emissions_xgb = xgbregression.predict(user_df_scaled)
 
 # Display the predicted carbon emissions to the user
-print("Predicted Carbon Emissions:", predicted_emissions[0])
+print("Predicted Carbon Emissions (Random Forest):", predicted_emissions_rf[0])
+print("Predicted Carbon Emissions (XGBoost):", predicted_emissions_xgb[0])

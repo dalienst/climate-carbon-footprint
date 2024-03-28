@@ -8,6 +8,8 @@ scikit-learn = "*"
 pandas = "*"
 numpy = "*"
 tensorflow = "*"
+xgboost = "*"
+django = "==4.2.11"
 
 [dev-packages]
 black = "*"
