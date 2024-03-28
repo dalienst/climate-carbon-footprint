@@ -84,7 +84,12 @@ CORS_ALLOW_METHODS = (
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = default_headers + ("Access-Control-Allow-Origin",)
+CORS_ALLOW_HEADERS = default_headers + (
+    "Access-Control-Allow-Origin",
+    "Access-Control-Allow-Credentials",
+    "Access-Control-Allow-Methods",
+    "Access-Control-Allow-Headers",
+)
 
 
 CSRF_TRUSTED_ORIGINS = [
