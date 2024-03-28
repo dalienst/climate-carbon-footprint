@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+scikit-learn = "1.4.1.post1"
+pandas = "2.2.1"
+numpy = "1.26.4"
+tensorflow = "2.16.1"
+xgboost = "2.0.3"
+django = "4.2.11"
+djangorestframework = "3.15.0"
+markdown = "3.6"
+python-decouple = "3.8"
+whitenoise = "6.6.0"
+psycopg2-binary = "2.9.9"
+gunicorn = "21.2.0"
+django-cors-headers = "4.3.1"
+
+[dev-packages]
+black = "24.3.0"
+
+[requires]
+python_version = "3.11"
