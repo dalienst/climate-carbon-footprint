@@ -10,6 +10,13 @@ numpy = "*"
 tensorflow = "*"
 xgboost = "*"
 django = "==4.2.11"
+djangorestframework = "*"
+markdown = "*"
+python-decouple = "*"
+whitenoise = "*"
+psycopg2-binary = "*"
+gunicorn = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 black = "*"

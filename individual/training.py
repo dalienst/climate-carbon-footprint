@@ -107,13 +107,9 @@ score2 = pd.DataFrame(data2)
 print("mean absolute error")
 print(score2)
 
-# Save XGBRegressor model
-with open("xgboost_model.pkl", "wb") as file:
-    pickle.dump(xgbregression, file)
-
 user_input = {
-    "Body Type": "underweight",
-    "Sex": "female",
+    "Body Type": "overweight",
+    "Sex": "male",
     "Diet": "pescatarian",
     "How Often Shower": "daily",
     "Heating Energy Source": "coal",
@@ -151,3 +147,12 @@ predicted_emissions_xgb = xgbregression.predict(user_df_scaled)
 # Display the predicted carbon emissions to the user
 print("Predicted Carbon Emissions (Random Forest):", predicted_emissions_rf[0])
 print("Predicted Carbon Emissions (XGBoost):", predicted_emissions_xgb[0])
+
+
+# Save XGBRegressor model
+with open("xgboost_model.pkl", "wb") as file:
+    pickle.dump(xgbregression, file)
+
+# Save RandomForestRegressor model
+with open("random_forest_model.pkl", "wb") as file:
+    pickle.dump(randomforestregression, file)
