@@ -82,7 +82,7 @@ data1 = {
 }
 
 score = pd.DataFrame(data1)
-print("r_squared metrics")
+print("Accuracy:")
 print(score)
 
 data2 = {
@@ -149,10 +149,10 @@ print(score2)
 # print("Predicted Carbon Emissions (XGBoost):", predicted_emissions_xgb[0])
 
 
-# Save XGBRegressor model
-with open("xgboost_model.pkl", "wb") as file:
-    pickle.dump(xgbregression, file)
+# # Save XGBRegressor model
+# with open("xgboost_model.pkl", "wb") as file:
+#     pickle.dump(xgbregression, file)
 
-# Save RandomForestRegressor model
-with open("random_forest_model.pkl", "wb") as file:
-    pickle.dump(randomforestregression, file)
+# # Save RandomForestRegressor model
+# with open("random_forest_model.pkl", "wb") as file:
+#     pickle.dump(randomforestregression, file)
